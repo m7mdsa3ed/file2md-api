@@ -22,15 +22,6 @@ The API supports various file formats including:
 
 ## Installation
 
-### Quick Setup
-
-Run the setup script:
-
-```bash
-chmod +x setup.sh
-./setup.sh
-```
-
 ### Manual Setup
 
 1. Create and navigate to the project directory:

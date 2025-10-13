@@ -3,9 +3,13 @@ import multer from 'multer';
 import fs from 'fs/promises';
 import path from 'path';
 import { convertToMarkdown } from 'filetomarkdown';
+import cors from 'cors';
 
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
+
+// Enable CORS for all origins
+app.use(cors());
 
 app.post('/api/convert', upload.single('file'), async (req, res) => {
   try {
@@ -19,7 +23,6 @@ app.post('/api/convert', upload.single('file'), async (req, res) => {
     const markdown = await convertToMarkdown(tempFilePath);
     res.json({ markdown });
   } catch (error) {
-    throw error
     res.status(500).json({ error: error.message });
   }
 });
